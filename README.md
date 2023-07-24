@@ -2,12 +2,12 @@
 
 学习陈硕老师muduo C++网络库自带的一个例子，基于muduo库的简易版memcache   
 memcache 本质上是一个远程的hash表，存储key value数据，即 hash_map<key, value>  
-这个程序主要是用来展示，处理并发请求的，非阻塞I/O网络编程 
+这个程序主要是用来展示，处理并发请求的非阻塞I/O网络编程 
 
 #### 数据结构的设计
     不是用C语言完全定制数据结构，用C++半定制数据结构  
     Item数据结构的设计     和memcached中类似  
-    hash table的设计      采用unordered_set<shared_ptr<const Item>>  
+    hash table的设计     采用unordered_set<shared_ptr<const Item>>  
     存放shared_ptr，利用引用计数可以减少临界区的长度  
     const Item 表明item存放到 hash table之后，就不允许再改变了  
     set 一个已有的item，会先删除之前的item，再存储相同key的新item  
@@ -19,10 +19,10 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
 #### 网络I/O模型
     基于muduo网络库，即事件驱动的，I/O multiplexing + nonblocking I/O，支持多线程，即One EventLoop per Thread
 #### 协议
-按照memcached 文本协议，参考protocol.pdf
+按照memcached 文本协议，参考 protocol.pdf
 #### 实现的命令
 ##### Storage commands
-	set/add /replace/append/prepend/cas
+	set/add/replace/append/prepend/cas
 ##### Retrieval command
 	get/gets
 ##### Deletion
@@ -30,14 +30,14 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
 ##### 其它的
 	version/quit/shutdown
 #### 未支持
-    ##### 数据超时
-    ##### 内存替换算法没实现（LRU Least Recently Used 最近最少使用)
-    ##### incr / decr
-    #####  二进制协议
-    #####  没有自己定制内存分配器，使用系统自带的malloc
-    ##### 只支持 TCP协议
+    数据超时
+    内存替换算法没实现（LRU Least Recently Used 最近最少使用)
+    incr/decr
+    二进制协议
+    没有自己定制内存分配器，使用系统自带的malloc
+    只支持TCP协议
 #### 具体的业务逻辑(协议处理逻辑)
-! [图片](https://github.com/xy27/muduo-memcache/blob/main/mem.png "1")  
+! [图片1](https://github.com/xy27/muduo-memcache/blob/main/mem.png "1")  
 
 #### 性能对比测试
-! [图片](https://github.com/xy27/muduo-memcache/blob/main/test.png "1")  
+! [图片2](https://github.com/xy27/muduo-memcache/blob/main/test.png "2")  
