@@ -12,7 +12,7 @@ static bool isBinaryProtocol(uint8_t firstByte)
 const int kLongestKeySize = 250;
 string Session::kLongestKey(kLongestKeySize, 'x');
 
-// 其实对boost库中的东西 根本不熟
+// 其实对boost库中的东西根本不熟
 // 只能读懂大致意思
 template <typename InputIterator, typename Token>
 bool Session::SpaceSeparator::operator()(InputIterator& next, InputIterator end, Token& tok)
@@ -67,7 +67,7 @@ struct Session::Reader
 
  private:
   Tokenizer::iterator first_;       // Tokenizer::iterator是StringPiece*类型？？？
-  Tokenizer::iterator last_;;
+  Tokenizer::iterator last_;
 };
 
 // 注意这里回调函数 参数中的 conn 与 Session的成员变量conn_
