@@ -18,7 +18,7 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
     muduo-memcache消耗内存261M左右，memcached消耗内存179M左右
 #### 网络I/O模型
     基于muduo网络库，即事件驱动的，I/O multiplexing + nonblocking I/O，支持多线程，即One EventLoop per Thread
-#### [协议](https://github.com/xy27/muduo-memcache/blob/main/protocol.pdf "protocol.pdf")
+#### 协议([protocol](https://github.com/xy27/muduo-memcache/blob/main/protocol.pdf "protocol.pdf"))
 #### 实现的命令
 	set/add/replace/append/prepend/cas
 	get/gets
