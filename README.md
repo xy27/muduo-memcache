@@ -5,13 +5,13 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
 这个程序主要是用来展示，处理并发请求的非阻塞I/O网络编程 
 
 #### 数据结构的设计
-    不是用C语言完全定制数据结构，用C++半定制数据结构  
+    不是用C语言完全定制数据结构，是用C++半定制数据结构  
     Item数据结构的设计和memcached中类似  
     hash table的设计采用unordered_set<shared_ptr<const Item>>  
     存放shared_ptr，利用引用计数可以减少临界区的长度  
     const Item 表明item存放到 hash table之后，就不允许再改变了  
-    set 一个已有的item，会先删除之前的item，再存储相同key的新item  
-    shard（分片） 全局有多个hash table 每个hash table 配一把锁
+    set一个已有的item，会先删除之前的item，再存储相同key的新item  
+	全局有多个hash table，每个hash table配一把锁
 #### 数据结构的内存开销
     内存开销大约是memcached的1.46~1.48倍(即多46%) 
     比如，100个client（连接），每个存储10000个item，value长度100个字节，  
@@ -19,7 +19,7 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
 #### 网络I/O模型
     基于muduo网络库，即事件驱动的，I/O multiplexing + nonblocking I/O，支持多线程，即One EventLoop per Thread
 #### 协议
-	按照memcached 文本协议，参考 protocol.pdf
+	按照memcached 文本协议，参考这是一个链接 [protocol.pdf](https://github.com/xy27/muduo-memcache/blob/main/protocol.pdf "protocol.pdf") 
 #### 实现的命令
 	set/add/replace/append/prepend/cas
 	get/gets
