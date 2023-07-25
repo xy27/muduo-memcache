@@ -20,7 +20,7 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
     基于muduo网络库，即事件驱动的，I/O multiplexing + nonblocking I/O，支持多线程，即One EventLoop per Thread
 #### 协议
 	按照memcached 文本协议，参考
-这是一个链接 [protocol.pdf](https://github.com/xy27/muduo-memcache/blob/main/protocol.pdf    "protocol.pdf") 
+[protocol.pdf](https://github.com/xy27/muduo-memcache/blob/main/protocol.pdf    "protocol.pdf") 
 #### 实现的命令
 	set/add/replace/append/prepend/cas
 	get/gets
