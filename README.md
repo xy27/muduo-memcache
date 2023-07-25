@@ -33,7 +33,6 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
     二进制协议
     只支持TCP协议
 #### 具体的业务逻辑(协议处理逻辑)
-! [图片1](https://github.com/xy27/muduo-memcache/blob/main/mem.png "1")  
-![这是图片](https://github.com/xy27/muduo-memcache/blob/main/mem.png "1")
+![这是图片](https://github.com/xy27/muduo-memcache/blob/main/mem.png "协议处理逻辑")  
 #### 性能对比测试
-! [图片2](https://github.com/xy27/muduo-memcache/blob/main/test.png "2")  
+![这是图片](https://github.com/xy27/muduo-memcache/blob/main/test.png "性能测试")  
