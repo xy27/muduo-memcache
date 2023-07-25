@@ -84,8 +84,8 @@ bool MemcacheServer::storeItem(const ItemPtr& item, const Item::UpdatePolicy pol
     {
       if (*exists)
       {
-        // 这里的flags，exptime是怎么设置的？replace 能改变这些参数吗？append prepend 能改变这些参数吗？
-        // 看看memcached的协议就知道了
+        // The append and prepend commands do not accept flags or exptime. 
+        // They update existing data portions, and ignore new flag and exptime settings.
         const ConstItemPtr& oldItem = *it;
         int newLen = static_cast<int>(item->valueLength() + oldItem->valueLength() - 2);  // valueLength()是包含\r\n的
         ItemPtr newItem(Item::makeItem(item->key(),
