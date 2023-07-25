@@ -11,16 +11,14 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
     存放shared_ptr，利用引用计数可以减少临界区的长度  
     const Item 表明item存放到 hash table之后，就不允许再改变了  
     set一个已有的item，会先删除之前的item，再存储相同key的新item  
-	全局有多个hash table，每个hash table配一把锁
+    全局有多个hash table，每个hash table配一把锁
 #### 数据结构的内存开销
     内存开销大约是memcached的1.46~1.48倍(即多46%) 
     比如，100个client（连接），每个存储10000个item，value长度100个字节，  
     muduo-memcache消耗内存261M左右，memcached消耗内存179M左右
 #### 网络I/O模型
     基于muduo网络库，即事件驱动的，I/O multiplexing + nonblocking I/O，支持多线程，即One EventLoop per Thread
-#### 协议
-	按照memcached 文本协议，参考
-[protocol.pdf](https://github.com/xy27/muduo-memcache/blob/main/protocol.pdf    "protocol.pdf") 
+#### 协议[protocol.pdf](https://github.com/xy27/muduo-memcache/blob/main/protocol.pdf "protocol.pdf")
 #### 实现的命令
 	set/add/replace/append/prepend/cas
 	get/gets
