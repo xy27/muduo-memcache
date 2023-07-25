@@ -28,11 +28,12 @@ memcache 本质上是一个远程的hash表，存储key value数据，即 hash_m
 #### 未支持
     数据超时
     内存替换算法没实现（LRU Least Recently Used 最近最少使用)
+    没有自己定制内存分配器，使用系统自带的malloc
     incr/decr
     二进制协议
-    没有自己定制内存分配器，使用系统自带的malloc
     只支持TCP协议
 #### 具体的业务逻辑(协议处理逻辑)
 ! [图片1](https://github.com/xy27/muduo-memcache/blob/main/mem.png "1")  
+![这是图片](https://github.com/xy27/muduo-memcache/blob/main/mem.png "1")
 #### 性能对比测试
 ! [图片2](https://github.com/xy27/muduo-memcache/blob/main/test.png "2")  
