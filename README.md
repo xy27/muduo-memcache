@@ -1,6 +1,6 @@
 ## muduo-memcache
 
-学习陈硕老师muduo C++网络库自带的一个例子，基于muduo库的简易版memcache   
+基于muduo库的简易版memcache   
 memcache 本质上是一个远程的hash表，存储key value数据，即 hash_map<key, value>  
 这个程序主要是用来展示，处理并发请求的非阻塞I/O网络编程 
 
